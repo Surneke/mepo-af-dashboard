@@ -33,3 +33,10 @@ exports.deleteOrder = (req, res, next) => {
         data: `deleted ${req.params.id} order.`,
     })
 };
+
+
+{/* <input ref="imageRef" type="file" multiple accept="image/*" name="images" /> */}
+
+
+//dorvoljin onclick imgaref.current.click()
+//  URL.createObjectURL(item)

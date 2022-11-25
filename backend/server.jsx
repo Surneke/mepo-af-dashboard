@@ -1,19 +1,19 @@
 const dotenv = require("dotenv");
 const express = require("express");
+const cookieParser = require("cookie-parser")
+const bodyParser = require("body-parser")
 const { connect, connection } = require("mongoose");
-
-//routers
 const ordersRoutes = require("./routes/ordersRouter.jsx");
 const productsRouter = require("./routes/productsRouter.jsx");
 
 //appiin tohirgoog shalgah process.env
 dotenv.config({ path: "./config/.env" });
 
-const app = express();
 //router
-app.use("/api/v1/orders", ordersRoutes);
-app.use("/api/v1/products", productsRouter);
-
+const app = express();
+app.use(bodyParser())
+app.use("/api/orders", ordersRoutes);
+app.use("/api", productsRouter);
 
 //mongodb holboh
 connection.once("open", () => {
