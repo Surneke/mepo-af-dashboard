@@ -1,42 +1,45 @@
-exports.getOrders = (req, res, next) => {
-    res.status(200).json({
-        success: true,
-        data: "get all oreders.",
-    })
+const { OrderSchema, OrderModel } = require("../model/ordersModel.jsx");
+
+exports.getOrders = async (req, res) => {
+	try {
+		// const { page, limit, sort } = req.query;
+		const allOrders = await OrderModel.find().populate("orderItems");
+		res.status(200).json({ allOrders });
+	} catch (error) {
+		return res.status(500).json({ msg: error.message });
+	}
 };
 
-exports.getOrder = (req, res, next) => {
-    console.log(req.params.id)
-    res.status(200).json({
-        success: true,
-        data: `get ${req.params.id} order.`,
-    })
+exports.getOrder = (req, res) => {
+	console.log(req.params.id);
+	res.status(200).json({
+		success: true,
+		data: `get ${req.params.id} order.`,
+	});
 };
 
-exports.createOrder = (req, res, next) => {
-    res.status(200).json({
-        success: true,
-        data: "create new order.",
-    })
+exports.updateOrder = async (req, res) => {
+	try {
+		const { orderStatus } = req.body;
+		await OrderModel.findByIdAndUpdate(req.params.id, { orderStatus });
+		res.status(200).json({ msg: `${req.params.id} item updated` });
+	} catch (error) {
+		return res.status(500).json({ msg: error.message });
+	}
 };
 
-exports.updateOrder = (req, res, next) => {
-    res.status(200).json({
-        success: true,
-        data: `update ${req.params.id} order.`,
-    })
+exports.deleteOrder = async (req, res) => {
+	try {
+		await OrderModel.findByIdAndDelete(req.params.id);
+		res.status(200).json({ msg: `${req.params.id} item was deleted` });
+	} catch (error) {
+		res.status(500).json({ msg: error.message });
+	}
 };
 
-exports.deleteOrder = (req, res, next) => {
-    res.status(200).json({
-        success: true,
-        data: `deleted ${req.params.id} order.`,
-    })
-};
-
-
-{/* <input ref="imageRef" type="file" multiple accept="image/*" name="images" /> */}
-
+{
+	/* <input ref="imageRef" type="file" multiple accept="image/*" name="images" /> */
+}
 
 //dorvoljin onclick imgaref.current.click()
 //  URL.createObjectURL(item)
