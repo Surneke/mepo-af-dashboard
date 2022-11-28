@@ -33,7 +33,7 @@ exports.deleteOrder = async (req, res) => {
 		await OrderModel.findByIdAndDelete(req.params.id);
 		res.status(200).json({ msg: `${req.params.id} item was deleted` });
 	} catch (error) {
-		res.status(500).json({ msg: error.message });
+		return res.status(500).json({ msg: error.message });
 	}
 };
 

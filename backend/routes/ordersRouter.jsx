@@ -2,7 +2,6 @@ const express = require("express");
 const ordersRouter = express.Router();
 const {
 	getOrders,
-	createOrder,
 	updateOrder,
 	deleteOrder,
 	getOrder,
