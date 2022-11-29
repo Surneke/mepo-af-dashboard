@@ -4,7 +4,7 @@ const {
 	deleteArtist,
 	editArtist,
 	getArtists,
-} = require("../controllers/artistControllers");
+} = require("../controllers/artistControllers.jsx");
 
 artistsRouter.route("/artists").get(getArtists);
 artistsRouter.route("/artists/:id").patch(editArtist).delete(deleteArtist);

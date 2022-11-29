@@ -86,7 +86,7 @@ exports.addProducts = async (req, res) => {
 			special,
 			quantity,
 		});
-		await newProduct.save();
+		// await newProduct.save();
 		res.status(200).json({ newProduct });
 	} catch (error) {
 		return res.status(500).json({ msg: error.message });

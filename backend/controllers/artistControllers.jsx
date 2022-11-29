@@ -32,7 +32,7 @@ exports.createArtist = async (req, res) => {
 		const { title, name, image } = req.body;
 		const errs = errorHandler(title, name, image);
 		if (Object.keys.length > 0) return res.status(400).json({ msg: errs });
-		const newArtist = new ArtistModel(title, name, image);
+		const newArtist = new ArtistModel({title, name, image});
 		await newArtist.save();
 		res.status(200).json({ newArtist });
 	} catch (error) {
