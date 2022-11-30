@@ -4,9 +4,9 @@ import { useAuthProvider } from "../providers/AuthProvider";
 import { RoutesComponent } from "../routes";
 
 export const PrivateRouter = () => {
-	const { islogin, setIsLogin, openLogin, setOpenLogin, check } =
+	const {  token: { userToken}} =
 		useAuthProvider();
 
 	// if(!islogin) setOpenLogin(true);
-	return check ? <RoutesComponent /> : <Navigate to="/login" />;
+	return userToken ? <RoutesComponent /> : <Navigate to="/" />;
 };
