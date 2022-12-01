@@ -1,46 +1,31 @@
+import { useState } from "react";
+import { useAuth } from "../api/useAuth";
 import Logo from "../images/black.png";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import {  useAuthProvider } from "../providers/AuthProvider";
-import { useNavigate } from "react-router";
 
-export const Login = (props) => {
-	const { setCheck } = useAuthProvider();
-	const navigate = useNavigate();
+const Login = () => {
+	const { login } = useAuth();
+	const [userData, setUserData] = useState({
+		email: "",
+		password: ""
+	})
 	const style = {
 		textField: {
 			marginTop: "10px",
 		},
 	};
-	const handleClick = (event) => {
-		event.preventDefault();
-		const data = new FormData(event.currentTarget);
-		if (
-			data.get("email") === "surnee399@gmail.com" &&
-			data.get("password") === "1234"
-		) {
-			setCheck(true);
-			navigate("/orders");
-		} else {
-			alert("code buruu");
-		}
-	};
 
+	const handleClick = (e) => {
+		e.preventDefault();
+		login(userData);
+	}
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setUserData({ ...userData, [name]: value });
+	}
 	return (
-		<Box display="flex" width="100%" height="100vh">
-			<Box
-				sx={{
-					backgroundColor: "#f2f2f7",
-					height: "100%",
-					width: "35%",
-				}}
-			/>
-			<Box
-				display="flex"
-				height="100%"
-				justifyContent="center"
-				alignItems="center"
-				width="50%"
-			>
+		<Box className="login_container">
+			<Box className="login_item">
 				<Box display="flex" flexDirection="column" height="50%">
 					<Box
 						height="80px"
@@ -75,6 +60,7 @@ export const Login = (props) => {
 							autoComplete="email"
 							autoFocus
 							sx={style.textField}
+							onChange={handleChange}
 						/>
 						<TextField
 							label="Enter your password"
@@ -86,6 +72,7 @@ export const Login = (props) => {
 							id="password"
 							autoComplete="current-password"
 							sx={style.textField}
+							onChange={handleChange}
 						/>
 						<Button
 							type="submit"
@@ -100,3 +87,5 @@ export const Login = (props) => {
 		</Box>
 	);
 };
+
+export default Login;
