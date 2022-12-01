@@ -6,6 +6,7 @@ export const useAuth = () => {
         userDetail: { setDetail },
         token: { setUserToken }
     } = useAuthProvider();
+    const kdld = [];
 
     const login = async (data) => {
         try {
