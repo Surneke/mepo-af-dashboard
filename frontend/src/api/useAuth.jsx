@@ -1,5 +1,5 @@
 import { postApi, getApi } from "../utils/fetchData";
-import { useAuthProvider } from "../providers/AuthProvider";
+import { useAuthProvider } from "../context/AuthProvider";
 
 export const useAuth = () => {
   const {
@@ -9,7 +9,7 @@ export const useAuth = () => {
 
   const login = async (data) => {
     try {
-      const res = await postApi("/api/login", data);
+      const res = await postApi("/login", data);
       setDetail(res.data.user);
       setUserToken(res.data.token);
       localStorage.setItem("userLoggedIn", "true");
@@ -20,7 +20,7 @@ export const useAuth = () => {
 
   const refreshToken = async () => {
     try {
-      const res = await getApi("/api/refresh_token");
+      const res = await getApi("/refresh_token");
       setDetail(res.data.user);
       setUserToken(res.data.token);
     } catch (error) {

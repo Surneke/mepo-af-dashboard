@@ -1,10 +1,9 @@
 import { Outlet } from "react-router";
-import { theme } from "./providers/Theme";
+import { theme } from "./context/Theme";
 import { css, Global } from "@emotion/react";
 import { ThemeProvider } from "@mui/material";
 import { CookiesProvider } from "react-cookie";
-import { AuthProvider } from "./providers/AuthProvider";
-import { PrivateRouter, ResponsiveDrawer } from "./components";
+import {  ResponsiveDrawer } from "./components";
 
 export const Layout = ({children}) => {
   return (
@@ -17,7 +16,6 @@ export const Layout = ({children}) => {
         `}
       />
       <ResponsiveDrawer />
-      {/* <PrivateRouter /> */}
       <Outlet />
     </CookiesProvider>
   );

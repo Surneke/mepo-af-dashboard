@@ -1,6 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { Navigate } from "react-router";
-import { Orders, Login } from "../pages";
+import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {

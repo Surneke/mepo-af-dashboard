@@ -9,6 +9,7 @@ const usersRouter = require("./routes/usersRouter.jsx");
 const ordersRoutes = require("./routes/ordersRouter.jsx");
 const artistsRouter = require("./routes/artistRouter.jsx");
 const productsRouter = require("./routes/productsRouter.jsx");
+const addressRouter = require("./routes/addressRouter.jsx");
 
 //appiin tohirgoog shalgah process.env
 dotenv.config();
@@ -25,6 +26,7 @@ app.use("/api", imgRouter);
 app.use("/api", usersRouter);
 app.use("/api", ordersRoutes);
 app.use("/api", productsRouter);
+app.use("/api", addressRouter);
 
 //mongodb holboh
 connection.once("open", () => {

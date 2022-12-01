@@ -1,13 +1,15 @@
-const { Schema, model, Types } = require ("mongoose");
+const { Schema, model, Types } = require("mongoose");
 
-// const ETypeOrder = [ 
+// const ETypeOrder = [
 // [  ORDERED = "ORDERED"]
 //  [ COMPLETED = "COMPLETED"]
 //  [ DELIVERING = "DELIVERING"]
 // ]
-const ORDERED = "ORDERED";
-const COMPLETED = "COMPLETED";
-const DELIVERING = "DELIVERING";
+const ETypeOrder = {
+  ORDERED: "ORDERED",
+  COMPLETED: "COMPLETED",
+  DELIVERING: "DELIVERING",
+};
 
 const OrderSchema = new Schema(
   {
@@ -15,13 +17,15 @@ const OrderSchema = new Schema(
     fullname: { type: String, required: true },
     email: String,
     address: { type: Types.ObjectId, required: "Address" },
-    orderItems: [{ type: Types.ObjectId, ref: "Product" }],
+    orderItem: { type: Types.ObjectId, ref: "Product" },
     orderStatus: {
       type: String,
-      default: ORDERED,
-      enum: Object.values(ORDERED,COMPLETED,DELIVERING),
+      default: ETypeOrder.ORDERED,
+      enum: Object.values(ETypeOrder),
     },
-    paymentID: { type: String },
+    amount: { type: Number, default: 1 },
+    size: { type: String, required: true },
+    paymentID: { type: String, default: "" },
   },
   { timestamps: true }
 );

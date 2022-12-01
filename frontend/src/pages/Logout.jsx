@@ -1,10 +1,11 @@
 import React from "react";
 import { LogoutModal } from "../components"; 
 
-export const Logout = () => {
+const Logout = () => {
 	return (
 		<div>
 			<LogoutModal/>
 		</div>
 	);
 };
+export default Logout

@@ -19,6 +19,9 @@ exports.getUsers = async (req, res) => {
         },
       });
       return res.status(200).json({ allUsers });
+    } else {
+      const allUsers = await UserModel.find();
+      return res.status(200).json({ allUsers });
     }
   } catch (error) {
     return res.status(500).json({ msg: error.message });
@@ -69,7 +72,6 @@ exports.login = async (req, res) => {
 exports.refreshToken = async (req, res) => {
   try {
     const rfToken = req.cookies.refreshToken;
-    console.log(rfToken);
     if (!rfToken) {
       res.status(400).json({ msg: "login hiine u" });
     }

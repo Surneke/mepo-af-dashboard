@@ -3,7 +3,7 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import { useAuth } from "../api/useAuth";
 
-export const Login = () => {
+const Login = () => {
   const  {login} = useAuth();
   const [userData, setUserData] = useState({
     email: "",
@@ -64,3 +64,5 @@ export const Login = () => {
     </Box>
   );
 };
+
+export default Login

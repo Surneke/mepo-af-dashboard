@@ -1,44 +1,46 @@
 const { OrderSchema, OrderModel } = require("../model/ordersModel.jsx");
 
 exports.getOrders = async (req, res) => {
-	try {
-		// const { page, limit, sort } = req.query;
-		const allOrders = await OrderModel.find().populate("orderItems");
-		res.status(200).json({ allOrders });
-	} catch (error) {
-		return res.status(500).json({ msg: error.message });
-	}
+  try {
+    // const { page, limit, sort } = req.query;
+    const allOrders = await OrderModel.find()
+      .populate("orderItem user")
+      .populate({ path: "user", populate:{path:"address"}  });
+    res.status(200).json({ allOrders });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
 };
 
 exports.getOrder = (req, res) => {
-	console.log(req.params.id);
-	res.status(200).json({
-		success: true,
-		data: `get ${req.params.id} order.`,
-	});
+  console.log(req.params.id);
+  res.status(200).json({
+    success: true,
+    data: `get ${req.params.id} order.`,
+  });
 };
 
 exports.updateOrder = async (req, res) => {
-	try {
-		const { orderStatus } = req.body;
-		await OrderModel.findByIdAndUpdate(req.params.id, { orderStatus });
-		res.status(200).json({ msg: `${req.params.id} item updated` });
-	} catch (error) {
-		return res.status(500).json({ msg: error.message });
-	}
+  try {
+    const { orderStatus } = req.body;
+    await OrderModel.findByIdAndUpdate(req.params.id, { orderStatus });
+    res.status(200).json({ msg: `${req.params.id} item updated` });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
 };
 
 exports.deleteOrder = async (req, res) => {
-	try {
-		await OrderModel.findByIdAndDelete(req.params.id);
-		res.status(200).json({ msg: `${req.params.id} item was deleted` });
-	} catch (error) {
-		return res.status(500).json({ msg: error.message });
-	}
+  try {
+    await OrderModel.findByIdAndDelete(req.params.id);
+    res.status(200).json({ msg: `${req.params.id} item was deleted` });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
 };
 
 {
-	/* <input ref="imageRef" type="file" multiple accept="image/*" name="images" /> */
+  /* <input ref="imageRef" type="file" multiple accept="image/*" name="images" /> */
 }
 
 //dorvoljin onclick imgaref.current.click()
