@@ -8,6 +8,7 @@ const imgRouter = require("./routes/imageRouter.jsx");
 const usersRouter = require("./routes/usersRouter.jsx");
 const ordersRoutes = require("./routes/ordersRouter.jsx");
 const productsRouter = require("./routes/productsRouter.jsx");
+//yhhh
 
 //appiin tohirgoog shalgah process.env
 dotenv.config();
