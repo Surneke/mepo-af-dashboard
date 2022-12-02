@@ -1,4 +1,4 @@
-const { OrderSchema, OrderModel } = require("../model/ordersModel.jsx");
+const {  OrderModel } = require("../model/ordersModel.jsx");
 
 exports.getOrders = async (req, res) => {
   try {

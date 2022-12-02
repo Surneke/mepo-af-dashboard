@@ -1,8 +1,7 @@
 const express = require("express");
 const imgRouter = express.Router();
-const { deleteImg, uploadImg } = require("../controllers/imageControllers.jsx");
+const { imgController } = require("../controllers/imageControllers.jsx")
 
-//routers
-imgRouter.route("/img/upload").post(uploadImg);
-imgRouter.route("/img/delete").post(deleteImg);
+imgRouter.route("/img").post(imgController.uploadImg);
+imgRouter.route("/img/:id").delete(imgController.deleteImg);
 module.exports = imgRouter;

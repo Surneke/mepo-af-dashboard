@@ -28,8 +28,7 @@ export const ResponsiveDrawer = (props) => {
 	};
 
 	const drawer = (
-		<div>
-			<Divider />
+		<Box mt="35px">
 			<List>
 				{list.map((el, index) => (
 					<Link
@@ -49,17 +48,18 @@ export const ResponsiveDrawer = (props) => {
 						</ListItem>
 					</Link>
 				))}
+				<Divider sx={{ mb: "30px", mt: "30px", padding: "0 30px" }} />
 				<ListItem disablePadding>
 					<ListItemButton>
 						<ListItemIcon>
 							<i className="fa-solid fa-arrow-right-from-bracket"></i>
 						</ListItemIcon>
 						<ListItemText primary="Logout" />
-						<LogoutModal  /> 
+						<LogoutModal />
 					</ListItemButton>
 				</ListItem>
 			</List>
-		</div>
+		</Box>
 	);
 
 	const container =
@@ -73,18 +73,18 @@ export const ResponsiveDrawer = (props) => {
 				sx={{
 					width: { sm: `calc(100% - ${drawerWidth}px)` },
 					ml: { sm: `${drawerWidth}px` },
+					backgroundColor: "#ffff",
 				}}
 			>
 				<Toolbar>
 					<IconButton
-						color="inherit"
 						aria-label="open drawer"
 						edge="start"
 						onClick={handleDrawerToggle}
 						sx={{ mr: 2, display: { sm: "none" } }}
 					></IconButton>
 					<Typography variant="h6" noWrap component="div">
-						Orders
+						Ordersrf
 					</Typography>
 				</Toolbar>
 			</AppBar>
@@ -156,11 +156,6 @@ const list = [
 		name: "Producs",
 		path: "/products",
 		icon: <i className="fa-solid fa-shirt"></i>,
-	},
-	{
-		name: "Collections",
-		path: "/collections",
-		icon: <i className="fa-solid fa-list"></i>,
 	},
 ];
 

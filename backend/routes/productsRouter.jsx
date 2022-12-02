@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 const productsRouter = express.Router();
-const { addProducts, deleteProduct, getProducts,updateProduct} = require('../controllers/productController.jsx');
-const { auth } = require('../middleware/auth.jsx');
+const { auth } = require("../middleware/authAdmin.jsx");
+const { productController } = require("../controllers/productController.jsx")
 
 //routers
-productsRouter.route('/product').get(getProducts).post(auth, addProducts);
-productsRouter.route('/product/:id').patch(updateProduct).delete(deleteProduct);
+productsRouter.route("/product").get(productController.getProducts).post(auth, productController.addProducts);
+productsRouter.route("/product/:id").patch(productController.updateProduct).delete(productController.deleteProduct);
 module.exports = productsRouter;

@@ -1,10 +1,5 @@
 const { Schema, model, Types } = require("mongoose");
 
-// const ETypeOrder = [
-// [  ORDERED = "ORDERED"]
-//  [ COMPLETED = "COMPLETED"]
-//  [ DELIVERING = "DELIVERING"]
-// ]
 const ETypeOrder = {
   ORDERED: "ORDERED",
   COMPLETED: "COMPLETED",

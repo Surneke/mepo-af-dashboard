@@ -1,10 +1,9 @@
 const express = require("express");
 const usersRouter = express.Router();
-const { getUsers, addAdmin, deleteUser, login, refreshToken } = require("../controllers/usersControllers.jsx");
+const { usersController } = require('../controllers/usersControllers.jsx')
 
-//routers
-usersRouter.route("/users").get(getUsers);
-usersRouter.post("/login", login);
-usersRouter.get("/refresh_token", refreshToken )
-usersRouter.route("/users/:id").delete(deleteUser).patch(addAdmin);
+usersRouter.route("/login", usersController.login);
+usersRouter.route("/users").get(usersController.getUsers);
+usersRouter.route("/refresh_token", usersController.refreshToken);
+usersRouter.route("/users/:id").delete(usersController.deleteUser).patch(usersController.addAdmin);
 module.exports = usersRouter;

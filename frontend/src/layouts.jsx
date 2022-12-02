@@ -1,22 +1,21 @@
 import { Outlet } from "react-router";
-import { theme } from "./context/Theme";
+import { ResponsiveDrawer } from "./components";
 import { css, Global } from "@emotion/react";
-import { ThemeProvider } from "@mui/material";
 import { CookiesProvider } from "react-cookie";
-import {  ResponsiveDrawer } from "./components";
 
-export const Layout = ({children}) => {
-  return (
-    <CookiesProvider>
-      <Global
-        styles={css`
-          body {
-            margin: 0;
-          }
-        `}
-      />
-      <ResponsiveDrawer />
-      <Outlet />
-    </CookiesProvider>
-  );
+
+export const Layout = () => {
+	return (
+		<CookiesProvider>
+			<Global
+				styles={css`
+					body {
+						margin: 0;
+					}
+				`}
+			/>
+			<ResponsiveDrawer />
+			<Outlet />
+		</CookiesProvider>
+	);
 };
