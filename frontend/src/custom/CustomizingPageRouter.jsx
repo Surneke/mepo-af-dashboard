@@ -1,6 +1,6 @@
 import { createElement } from 'react';
 import { useParams } from 'react-router-dom';
-import NotFound from "../components/NotFound";
+import {NotFound} from "../components/NotFound";
 
 export const CustomizingPageRouter = () => {
     const { page } = useParams();

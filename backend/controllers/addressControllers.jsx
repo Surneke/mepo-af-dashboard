@@ -1,5 +1,5 @@
 const { AddressModel } = require("../model/addressModel.jsx");
-const { UserModel } = require("../model/userModel");
+const { UserModel } = require("../model/usersModel.jsx");
 
 const addValidator = (country,citySoum,zipPostCode,stateProvince,apartmentSuite) => {
 	const errs = {};

@@ -1,4 +1,4 @@
-import { postApi, getApi } from "../utils/fetchData";
+import {  getApi } from "../utils/fetchData";
 import { useGlobalProvider } from "../context/GlobalContext";
 
 export const useOrders = () => {

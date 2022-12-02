@@ -11,7 +11,7 @@ export const RoutesComponent = () => {
 	const {
 		token: { userToken }
 	} = useAuthProvider();
-	const userloggedin = localStorage.getItem("userLogedIn")
+	const userloggedin = localStorage.getItem("userLoggedIn")
 	const { refreshToken } = useAuth();
 	useEffect(() => {
 		if (userloggedin) {

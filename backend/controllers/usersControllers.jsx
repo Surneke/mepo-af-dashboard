@@ -77,7 +77,7 @@ exports.usersController = {
 			}
 			jwt.verify(rToken, process.env.REFRESH_TOKEN, async (err, result) => {
 				if (err) return res.status(400).json({ msg: "Please enter login" });
-				const user = await UserModel.findOne(result.id);
+				const user = await UserModel.findById(result.id);
 				const access_token = createAccessToken({ id: user._id });
 				res.status(200).json({ user, token: access_token });
 			});

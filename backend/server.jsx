@@ -7,9 +7,8 @@ const { connect, connection } = require("mongoose");
 const imgRouter = require("./routes/imageRouter.jsx");
 const usersRouter = require("./routes/usersRouter.jsx");
 const ordersRoutes = require("./routes/ordersRouter.jsx");
-const artistsRouter = require("./routes/artistRouter.jsx");
-const productsRouter = require("./routes/productsRouter.jsx");
 const addressRouter = require("./routes/addressRouter.jsx");
+const productsRouter = require("./routes/productsRouter.jsx");
 
 //appiin tohirgoog shalgah process.env
 dotenv.config();
@@ -45,9 +44,6 @@ process.on("SIGINT", () => {
   });
 });
 
-connect(process.env.MONGODB_URL, {
-  UseNewUrlParser: true,
-  UseUnifiedTopology: true,
-}).then(() => {
+connect(process.env.MONGODB_URL).then(() => {
   app.listen(process.env.PORT, console.log(`Express server ${process.env.PORT}`));
 });

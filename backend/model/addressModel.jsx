@@ -1,6 +1,6 @@
-const { Shema, model, Types } = require("mongoose");
+const { Schema, model, Types } = require("mongoose");
 
-const AddressShema = new Shema(
+const AddressSchema = new Schema(
 	{
 		owner: { type: Types.ObjectId, ref: "User" },
 		country: { type: String, required: true, trim: true },
@@ -14,4 +14,4 @@ const AddressShema = new Shema(
 	{ timestamps: true }
 );
 
-exports.AddressModel = model("Address", AddressShema);
+exports.AddressModel = model("Address", AddressSchema);
