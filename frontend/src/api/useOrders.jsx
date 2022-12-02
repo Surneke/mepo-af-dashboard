@@ -5,7 +5,9 @@ export const useOrders = () => {
   const {
     orders: { setOrders },
   } = useGlobalProvider();
-  const changeOrderStatus = async () => {};
+  const changeOrderStatus = async () => {
+    
+  };
   const getOrders = async () => {
     try {
       const res = await getApi("/order");

@@ -11,3 +11,6 @@ export const postApi = async (url, data) => {
 export const getApi = async (url) => {
     return await API.get(url);
 };
+export const patchApi= async(url,data)=>{
+    
+}
