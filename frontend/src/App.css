@@ -22,3 +22,21 @@ body {
 	justify-content: center;
 	background-color: #fff;
 }
+.table-container {
+	max-width: 1600px;
+	min-width: 800px;
+	background-color: #fff;
+}
+.order_container {
+	width: 100vw;
+	height: 100vh;
+	background-color: #f2f2f9;
+}
+.table-etseg {
+	display: flex;
+	justify-content: space-between;
+}
+.table-row-all {
+	min-width: 150px;
+	max-width: 200px;
+}

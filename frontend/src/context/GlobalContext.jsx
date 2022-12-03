@@ -7,7 +7,7 @@ export const GlobalProvider = ({ children }) => {
     const [orders, setOrders] = useState([]);
     const [products, setProducts] = useState([]);
     const value = {
-        user: {
+        users: {
             users,
             setUsers
         },
@@ -24,3 +24,4 @@ export const GlobalProvider = ({ children }) => {
 };
 
 export const useGlobalProvider = () => useContext(GlobalContext);
+

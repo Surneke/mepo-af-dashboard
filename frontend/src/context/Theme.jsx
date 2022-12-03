@@ -6,8 +6,11 @@ export const theme = createTheme({
 		0: "none",
 		4: "none",
 		8: "none",
-		16:"none"
-	  },
+		16: "none"
+	},
+	Button: {
+		text: "12px"
+	},
 	palette: {
 		primary: {
 			main: "#f2f2f9",
@@ -18,6 +21,10 @@ export const theme = createTheme({
 		},
 		success: {
 			main: "#000",
+		},
+		info: {
+			main: "#000",
+			text: "#fff"
 		},
 		text: {
 			main: "#000",
@@ -51,5 +58,8 @@ export const theme = createTheme({
 		body1: {
 			fontSize: "14px",
 		},
+		body2: {
+			fontSize: "12px"
+		}
 	},
 });

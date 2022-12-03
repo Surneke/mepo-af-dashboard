@@ -9,10 +9,12 @@ export const useUsers = () => {
   const getUsers = async () => {
     try {
       const res = await getApi("/users");
-      setUsers(res.data.allUsers);
+      console.log(res , "gfvhgyj");
+      // setUsers(res.data.allUsers);
     } catch (error) {
       console.log(error);
     }
   };
   return { getUsers };
 };
+//

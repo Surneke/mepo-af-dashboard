@@ -1,27 +1,19 @@
 import * as React from "react";
 import Logo from "../images/black.png";
-import {
-	AppBar,
-	Box,
-	CssBaseline,
-	Divider,
-	Drawer,
-	IconButton,
-	List,
-	ListItem,
-	ListItemButton,
-	ListItemIcon,
-	ListItemText,
-	Toolbar,
-	Typography,
-} from "@mui/material";
-import { Link } from "react-router-dom";
+import { AppBar, Box, CssBaseline, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography, } from "@mui/material";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { CollapsibleTable } from "./List";
 import { LogoutModal } from "./logoutModal";
+import listIcon from "../icon/List.svg";
+import loginIcon from "../icon/Login.svg";
+import tShirtIcon from "../icon/T-shirt.svg";
+import usersIcon from "../icon/Users.svg"
 
 export const ResponsiveDrawer = (props) => {
 	const { window } = props;
+	const { pathname } = useLocation();
 	const [mobileOpen, setMobileOpen] = React.useState(false);
+
 
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
@@ -42,7 +34,7 @@ export const ResponsiveDrawer = (props) => {
 					>
 						<ListItem key={index} disablePadding>
 							<ListItemButton>
-								<ListItemIcon>{el.icon}</ListItemIcon>
+								<ListItemIcon><img alt="icon" src={el.icon} /></ListItemIcon>
 								<ListItemText primary={el.name} />
 							</ListItemButton>
 						</ListItem>
@@ -52,7 +44,7 @@ export const ResponsiveDrawer = (props) => {
 				<ListItem disablePadding>
 					<ListItemButton>
 						<ListItemIcon>
-							<i className="fa-solid fa-arrow-right-from-bracket"></i>
+							<img alt="icon" src={loginIcon} />
 						</ListItemIcon>
 						<ListItemText primary="Logout" />
 						<LogoutModal />
@@ -76,17 +68,14 @@ export const ResponsiveDrawer = (props) => {
 					backgroundColor: "#ffff",
 				}}
 			>
-				<Toolbar>
-					<IconButton
-						aria-label="open drawer"
-						edge="start"
-						onClick={handleDrawerToggle}
-						sx={{ mr: 2, display: { sm: "none" } }}
-					></IconButton>
+				<Toolbar sx={{ height: "64px" }}>
 					<Typography variant="h6" noWrap component="div">
-						Ordersrf
+						{({ pathname } === "/orders") ? "Orders" : "f"}
+						{{ pathname } === "/users" ? "Users" : "f"}
+						{{ pathname } === "/products" ? "Products" : "f"}
 					</Typography>
 				</Toolbar>
+
 			</AppBar>
 			<Box
 				component="nav"
@@ -132,10 +121,10 @@ export const ResponsiveDrawer = (props) => {
 					flexGrow: 1,
 					p: 3,
 					width: { sm: `calc(100% - ${drawerWidth}px)` },
+					backgroundColor: "#f2f2f9"
 				}}
 			>
-				<Toolbar />
-				<CollapsibleTable />
+
 			</Box>
 		</Box>
 	);
@@ -143,19 +132,22 @@ export const ResponsiveDrawer = (props) => {
 
 const list = [
 	{
+		number: 0,
 		name: "Orders",
 		path: "/orders",
-		icon: <i className="fa-solid fa-clipboard"></i>,
+		icon: listIcon,
 	},
 	{
+		number: 1,
 		name: "Users",
 		path: "/users",
-		icon: <i className="fa-solid fa-users"></i>,
+		icon: tShirtIcon,
 	},
 	{
+		number: 2,
 		name: "Producs",
 		path: "/products",
-		icon: <i className="fa-solid fa-shirt"></i>,
+		icon: usersIcon,
 	},
 ];
 

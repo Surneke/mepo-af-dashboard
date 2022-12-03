@@ -6,6 +6,7 @@ import { useAuth } from "./api/useAuth";
 import { useAuthProvider } from "./context/AuthProvider";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { CustomizingPageRouter } from "./custom/CustomizingPageRouter";
+import { ResponsiveDrawer } from "./components/AppBar"
 
 export const RoutesComponent = () => {
 	const {
@@ -21,10 +22,12 @@ export const RoutesComponent = () => {
 	}, [])
 	return (
 		<BrowserRouter>
+			{userToken ? <ResponsiveDrawer /> : ""}
 			<Routes>
 				<Route path="/" element={userToken ? <Orders /> : <Login />} />
 				<Route path="/:page" element={<CustomizingPageRouter />} />
 			</Routes>
+
 		</BrowserRouter>
 	);
 };
