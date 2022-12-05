@@ -3,8 +3,9 @@ import { Box, Typography } from "@mui/material";
 import { BasicModal } from "./modals/orderDetailModal";
 import React from "react";
 
-export const CollapsibleTable = (el) => {
+export const CollapsibleTable = ({el}) => {
 	const [visibile, setVisible] = React.useState()
+	console.log(el);
 
 	const style = {
 		container: {

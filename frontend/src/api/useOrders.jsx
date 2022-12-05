@@ -7,10 +7,11 @@ export const useOrders = () => {
   } = useGlobalProvider();
 
   const changeOrderStatus = async (status, id) => {
+    console.log(status, id);
     try {
-      await patchApi(`/orders/${id}`, status);
+      await patchApi(`/order/${id}`, { orderStatus: status });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
