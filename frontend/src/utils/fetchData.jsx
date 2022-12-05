@@ -13,5 +13,7 @@ export const getApi = async (url) => {
 };
 export const patchApi = async (url, data) => {
     return await API.patch(url, data)
-}
-//
+};
+export const deleteApi = async (url, data) => {
+    return await API.delete(url, data)
+};

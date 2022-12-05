@@ -9,7 +9,6 @@ export const useOrders = () => {
   const changeOrderStatus = async (status, id) => {
     try {
       await patchApi(`/orders/${id}`, status);
-    
     } catch (error) {
       console.log(error)
     }

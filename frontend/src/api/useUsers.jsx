@@ -8,9 +8,12 @@ export const useUsers = () => {
 
   const getUsers = async () => {
     try {
-      const res = await getApi("/users");
-      console.log(res , "gfvhgyj");
-      // setUsers(res.data.allUsers);
+      const res = await getApi("/users?role=User");
+      const res2 = await getApi("/users?role=Admin");
+
+      // console.log(res, "gfvhgyj");
+      setUsers(res2.data.allUsers);
+      setUsers(res.data.allUsers);
     } catch (error) {
       console.log(error);
     }
