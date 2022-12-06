@@ -1,6 +1,5 @@
 import { useState } from "react";
 import editIcon from "../../icon/Pen.svg";
-import { StatusSelect } from "../selects/orderStatusSelect";
 import { Box, Button, Typography, Modal, Divider } from "@mui/material";
 
 export const BasicModal = ({ el }) => {
@@ -57,7 +56,7 @@ export const BasicModal = ({ el }) => {
             </Box>
             <Box style={style.list}>
               <Typography sx={style.text1}>Purchased on </Typography>
-              <Typography variant="body2">{el.row.createdAt}</Typography>
+              <Typography variant="body2">{Date(el.row.createdAt).toLocaleString().slice(0, 15)}</Typography>
             </Box>
             <Box style={style.list}>
               <Typography sx={style.text1}>Total price</Typography>
@@ -93,17 +92,7 @@ export const BasicModal = ({ el }) => {
               </Typography>
             </Box>
           </Box>
-          <Divider sx={{ marginTop: "15px", color: "#f2f2f9" }} />
-          <Box>
-            <Typography variant="body2" mt="20px">
-              Change status
-            </Typography>
-            <Box style={style.list}>
-              <Typography sx={style.text1}>Status</Typography>
-              <StatusSelect element={el} />
-            </Box>
-          </Box>
-          <Box display="flex" justifyContent="space-between">
+          <Box display="flex" justifyContent="space-between" mt="30px">
             <Button variant="contained" onClick={handleClose}>
               Close
             </Button>
@@ -122,7 +111,7 @@ const style = {
     top: "50%",
     left: "50%",
     width: 500,
-    height: 820,
+    height: 770,
     position: "absolute",
     transform: "translate(-50%, -50%)",
     bgcolor: "background.paper",

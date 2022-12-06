@@ -4,6 +4,7 @@ const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
+  const [images, setImages] = useState([]);
   const [orders, setOrders] = useState([]);
   const [products, setProducts] = useState([]);
   const [navbarName, setNavbarName] = useState("");
@@ -19,6 +20,10 @@ export const GlobalProvider = ({ children }) => {
     products: {
       products,
       setProducts,
+    },
+    images: {
+      images,
+      setImages,
     },
     navName: { navbarName, setNavbarName },
   };

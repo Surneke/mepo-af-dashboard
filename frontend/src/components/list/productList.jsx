@@ -3,7 +3,6 @@ import { Box, Typography } from '@mui/material'
 
 
 export const ProductList = (el) => {
-    console.log(el);
     const style = {
         container: {
             height: "120px",

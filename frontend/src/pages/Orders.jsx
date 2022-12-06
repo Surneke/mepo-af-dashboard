@@ -17,9 +17,9 @@ const Orders = () => {
     getOrders();
     // eslint-disable-next-line
   }, []);
-
+console.log(orders);
   const datas = orders.map((el, index) => {
-    return { ...el, id: el._id };
+    return { ...el, id: el._id, index: index +1, createdAt : Date(el.createdAt).slice(0,15),orderName: el.orderItem.title , address: el.user.address.citySoum};
   });
   return (
     <Box style={style.box}>
@@ -34,25 +34,36 @@ const Orders = () => {
 
 const columns = [
   {
-    field: "size",
-    headerName: "Orderid",
+    field: "index" ,
+    headerName: "No",
+    width: 50,
+  },
+  {
+    field: "id",
+    headerName: "Order ID",
     width: 150,
   },
   {
-    field: "order_name",
-    headerName: "First name",
+    field: "createdAt",
+    headerName: "Purchased on",
     width: 150,
   },
   {
-    field: "color",
-    headerName: "Last name",
-    width: 150,
-  },
-  {
-    field: "age",
-    headerName: "Age",
+    field: "orderName",
+    headerName: "Order name",
     type: "number",
-    width: 110,
+    width: 150,
+  },
+  {
+    field: "size",
+    headerName: "Size",
+    type: "number",
+    width: 80,
+  },
+  {
+    field: "address",
+    headerName: "Ship to",
+    width: 150,
   },
   {
     field: "status",
@@ -63,7 +74,6 @@ const columns = [
   {
     field: "action",
     headerName: "Action",
-
     width: 110,
     renderCell: (params) => <BasicModal el={params} />,
   },
@@ -76,12 +86,11 @@ const style = {
     backgroundColor: "#f2f2f9",
     height: "100vh",
     width: "100vw",
+    paddingTop:"60px"
+   
   },
   container: {
-    maxWidth: "1500px",
-    minWidth: "1200px",
     marginLeft: "260px",
-    marginTop: "60px",
     backgroundColor: "#ffff",
   },
   head: {
