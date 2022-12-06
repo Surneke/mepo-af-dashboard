@@ -3,7 +3,6 @@ import { ProductInputModal } from "../modals/productsAddInputModal";
 import { Box, Button, Typography, Modal } from "@mui/material";
 import { useImgs } from "../../api/useImgs";
 import { useGlobalProvider } from "../../context/GlobalContext";
-import { useEffect } from "react";
 
 export const ProductModal = (props) => {
   const [cloudImages, setCloudImages] = useState([]);
@@ -11,8 +10,6 @@ export const ProductModal = (props) => {
   const {
     images: { images, setImages },
   } = useGlobalProvider();
-
-  //   useEffect(())
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -25,7 +22,7 @@ export const ProductModal = (props) => {
   };
   return (
     <div>
-      <Button onClick={handleOpen} variant="contained">
+      <Button onClick={handleOpen} variant="contained" color="info">
         Add product
       </Button>
       <Modal open={open}>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import editIcon from "../../icon/Pen.svg";
+import infoIcon from "../../icon/InfoCircle.svg"
 import { Box, Button, Typography, Modal, Divider } from "@mui/material";
 
 export const BasicModal = ({ el }) => {
@@ -10,7 +10,7 @@ export const BasicModal = ({ el }) => {
   return (
     <div>
       <Button onClick={handleOpen}>
-        <img alt="icon" src={editIcon} />
+        <img src={infoIcon} alt="icon" />
       </Button>
       <Modal open={open}>
         <Box sx={style.container}>

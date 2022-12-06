@@ -1,12 +1,12 @@
 import React from "react";
 import { useEffect } from "react";
+import { Box } from "@mui/material";
 import { useUsers } from "../api/useUsers";
-import { Box, Typography } from "@mui/material";
-import { UsersList } from "../components/list/usersList";
+import { DataGrid } from "@mui/x-data-grid";
 import { useGlobalProvider } from "../context/GlobalContext";
+import { UserModal } from "../components/modals/usersDetailModal";
 
 const Users = () => {
-  const list = ["No", "User ID", "Purchased on", "User name", "Phone number", "Gmail", "Role", "Order history"]
   const { getUsers } = useUsers();
   const {
     users: { users },
@@ -17,18 +17,18 @@ const Users = () => {
     // eslint-disable-next-line
   }, []);
 
-  // console.log(users, 'usersaaaaaaaa');
+  const datas = users.map((el, index) => {
+    return { ...el, id: el._id, index: index + 1, };
+  });
+
   return (
     <Box style={style.container}>
       <Box style={style.box}>
         <Box display="flex" justifyContent="space-between">
-          <Typography>Order listing</Typography>
+          {/* <Typography>Order listing</Typography> */}
         </Box>
-        <Box display="flex" justifyContent="space-between">
-          {list.map((el, index) => <Box style={style.head} key={index}><Typography  >{el}</Typography></Box>)}
-        </Box>
-        <Box>
-          {users?.map((el, index) => (<UsersList key={index} {...el} />))}
+        <Box sx={{ height: 600 }}>
+          <DataGrid rows={datas} columns={columns} pageSize={6} rowsPerPageOptions={[9]} disableSelectionOnClick experimentalFeatures={{ newEditingApi: true }} rowHeight={80} />
         </Box>
       </Box>
     </Box>
@@ -37,15 +37,48 @@ const Users = () => {
 
 export default Users;
 
+const columns = [
+  {
+    field: "index",
+    headerName: "No",
+    width: 50,
+    marginTop: "100px"
+  },
+  {
+    field: "id",
+    headerName: "User ID",
+    width: 200,
+  },
+  {
+    field: "email",
+    headerName: "User email",
+    type: "number",
+    width: 200,
+  },
+  {
+    field: "role",
+    headerName: "Role",
+    width: 100,
+  },
+  {
+    field: "action",
+    headerName: "Action",
+    width: 200,
+    renderCell: (params) => <UserModal el={params} />,
+  },
+];
+
 const style = {
   container: {
     height: "100vh",
     width: "100vw",
+    paddingTop: "40px",
+    paddingRight: "200px",
     backgroundColor: "#f2f2f9"
   },
   box: {
-    marginLeft: "260px",
-    marginTop: "70px"
+    marginLeft: "270px",
+    backgroundColor: "#fff"
   },
   head: {
     maxWidth: "200px",

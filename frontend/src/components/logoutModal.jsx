@@ -11,7 +11,6 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
   boxShadow: 24,
   p: 4,
 };
@@ -32,12 +31,16 @@ export const LogoutModal = () => {
         aria-describedby="keep-mounted-modal-description"
       >
         <Box sx={style}>
-          <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
-            Text in a modal
+          <Typography variant="h6" component="h2">
+            Log out?
           </Typography>
-          <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          <Typography mt="5px" sx={{ opacity: 0.7 }}>
+            Are sure you would like to logout of your account?
           </Typography>
+          <Box display="flex" justifyContent="space-between" mt="30px" >
+            <Button variant='contained' sx={{margin:"0px 30px"}}>Close</Button>
+            <Button variant='contained'>Yes</Button>
+          </Box>
         </Box>
       </Modal>
     </div>
