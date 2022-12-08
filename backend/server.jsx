@@ -44,6 +44,8 @@ process.on("SIGINT", () => {
   });
 });
 
+const port = process.env.PORT || 4000;
+
 connect(process.env.MONGODB_URL).then(() => {
-  app.listen(process.env.PORT, console.log(`Express server ${process.env.PORT}`));
+  app.listen(port, console.log(`Express server ${process.env.PORT}`));
 });
