@@ -3,22 +3,29 @@ import infoIcon from "../../icon/InfoCircle.svg"
 import { Box, Button, Typography, Modal } from "@mui/material";
 
 
-export const ProductDetailModal = (props) => {
+export const ProductDetailModal = (el) => {
+    console.log(el.gender);
     //   useEffect(())
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     return (
         <div>
-            <Button onClick={handleOpen} variant="contained">
-                <img src={infoIcon} alt="icon"/>
+            <Button onClick={handleOpen} >
+                <img src={infoIcon} alt="icon" />
             </Button>
             <Modal open={open}>
                 <Box sx={style.container}>
-                    <Typography variant="h6">ORDER HISTORY</Typography>
+                    <Typography variant="h6">PRODUCT DETAIL</Typography>
                     <Typography sx={{ opacity: 0.7 }}>The first image you add becomes the main image for this product.</Typography>
                     <Box>
-                        dksmkse
+                        <Box display="flex">
+                            {el._id}
+                            {/* <img src={el.images[0].url} alt="img" height='130px' width="100px" />
+                            <img src={el.images[1].url} alt="img" height='130px' width="100px" />
+                            <img src={el.images[2].url} alt="img" height='130px' width="100px" />
+                            <img src={el.images[3].url} alt="img" height='130px' width="100px" /> */}
+                        </Box>
                     </Box>
                     <Box display="flex" justifyContent="space-between">
                         <Button variant="contained" onClick={handleClose}>

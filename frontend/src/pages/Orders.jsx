@@ -2,13 +2,14 @@ import { Box } from "@mui/material";
 import React, { useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { useOrders } from "../api/useOrders";
+import { useProducts } from "../api/useProducts"
 import { useGlobalProvider } from "../context/GlobalContext";
 import { BasicModal } from "../components/modals/orderDetailModal";
 import { StatusSelect } from "../components/selects/orderStatusSelect";
 
 const Orders = () => {
-  // const list = ["No", "Order ID", "Purchased on", "Order name", "Color", "Size", "Status", "Ship to", "Action"];
   const { getOrders } = useOrders();
+  const { getProducts } = useProducts();
   const {
     orders: { orders },
   } = useGlobalProvider();
@@ -18,9 +19,13 @@ const Orders = () => {
     // eslint-disable-next-line
   }, []);
 
+
   const datas = orders.map((el, index) => {
-    return { ...el, id: el._id, index: index + 1, createdAt: Date(el.createdAt).slice(0, 15), orderName: el.orderItem.title, address: el.user.address.citySoum };
+    return {
+      ...el, id: el._id, index: index + 1, createdAt: Date(el.createdAt).slice(0, 15), orderName: el.orderItem.name, address: el.user.address.citySoum
+    };
   });
+
   return (
     <Box style={style.box}>
       <Box style={style.container}>
@@ -74,7 +79,7 @@ const columns = [
   {
     field: "action",
     headerName: "Action",
-    width: 110,
+    width: 140,
     renderCell: (params) => <BasicModal el={params} />,
   },
 ];

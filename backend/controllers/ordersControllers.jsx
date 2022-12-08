@@ -3,7 +3,6 @@ const { OrderModel } = require("../model/ordersModel.jsx");
 exports.orderController = {
   getOrders: async (req, res) => {
     try {
-      // const { page, limit, sort } = req.query;
       const allOrders = await OrderModel.find()
         .populate("orderItem user")
         .populate({ path: "user", populate: { path: "address" } });
@@ -41,9 +40,4 @@ exports.orderController = {
   },
 };
 
-{
-  /* <input ref="imageRef" type="file" multiple accept="image/*" name="images" /> */
-}
 
-//dorvoljin onclick imgaref.current.click()
-//  URL.createObjectURL(item)

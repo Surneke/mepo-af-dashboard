@@ -3,11 +3,14 @@ import { Box, Button, Typography, Modal } from "@mui/material";
 import infoIcon from "../../icon/InfoCircle.svg"
 
 
-export const UserModal = (props) => {
+export const UserModal = ({ el }) => {
+    console.log(el, "kjewdkefk");
     //   useEffect(())
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const orders = el.orders;
+    console.log(orders);
     return (
         <div>
             <Button onClick={handleOpen}>
@@ -15,17 +18,14 @@ export const UserModal = (props) => {
             </Button>
             <Modal open={open}>
                 <Box sx={style.container}>
-                    <Typography variant="h6">ORDER HISTORY</Typography>
-                    <Typography sx={{ opacity: 0.7 }}>The first image you add becomes the main image for this product.</Typography>
-                    <Box>
-                        dksmkse
+                    <Typography variant="h6">{el._id} USERS ORDER HISTORY</Typography>
+                    <Typography sx={{ opacity: 0.7 }}>All users has unique ID. </Typography>
+                    <Box height="400px" width="300px" mt="30px">
+                        {orders?.map((el) => <Typography>{el}</Typography>)}
                     </Box>
-                    <Box display="flex" justifyContent="space-between">
-                        <Button variant="contained" onClick={handleClose}>
+                    <Box>
+                        <Button variant="contained" onClick={handleClose} fullWidth>
                             Close
-                        </Button>
-                        <Button variant="contained" >
-                            Next
                         </Button>
                     </Box>
                 </Box>

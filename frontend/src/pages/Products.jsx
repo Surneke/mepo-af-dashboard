@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { useProducts } from "../api/useProducts";
 import { useGlobalProvider } from '../context/GlobalContext';
 import { ProductModal } from "../components/modals/productAddModal";
@@ -15,9 +15,9 @@ const Products = () => {
   }, [])
 
   const datas = products.map((el, index) => {
-    console.log(el);
-    return { ...el, id: el._id, index: index + 1, image: el.images[0].url };
+    return { ...el, id: el._id, index: index + 1, image: el.images[0].url, sizes: el.sizes[1] };
   });
+  console.log(datas);
 
   return (
     <Box style={style.container}>
@@ -43,46 +43,31 @@ const columns = [
   {
     field: "image",
     headerName: "Image 1",
-    width: 100,
+    width: 150,
     type: "image",
     renderCell: (params) => <img src={params.value} alt="zurag" height="75px" width="60px" />
   },
   {
-    field: "image",
-    headerName: "Image 2",
-    width: 100,
-    type: "image",
-    renderCell: (params) => <img src={params.value} alt="zurag" height="75px" width="60px" />
-  },
-  {
-    field: "image",
-    headerName: "Image 3",
-    width: 100,
-    type: "image",
-    renderCell: (params) => <img src={params.value} alt="zurag" height="75px" width="60px" />
-  },
-  {
-    field: "image",
-    headerName: "Image 4",
-    width: 100,
-    type: "image",
-    renderCell: (params) => <img src={params.value} alt="zurag" height="75px" width="60px" />
+    field: "title",
+    headerName: "Collection name",
+    width: 200,
   },
   {
     field: "name",
     headerName: "Name",
-    width: 150,
+    width: 200,
   },
   {
-    field: "size",
-    headerName: "Size",
-    width: 100,
+    field: "sizes",
+    headerName: "Sizes",
+    width: 120,
   },
   {
     field: "price",
     headerName: "Price",
     width: 100,
-  }, {
+  },
+  {
     field: "quantity",
     headerName: "QTY",
     width: 100,
@@ -95,7 +80,7 @@ const columns = [
   {
     field: "action",
     headerName: "Action",
-    width: 100,
+    width: 120,
     renderCell: (params) => <ProductDetailModal el={params} />,
   },
 ];

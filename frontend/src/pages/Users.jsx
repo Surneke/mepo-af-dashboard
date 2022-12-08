@@ -58,13 +58,13 @@ const columns = [
   {
     field: "role",
     headerName: "Role",
-    width: 100,
+    width: 200,
   },
   {
     field: "action",
-    headerName: "Action",
-    width: 200,
-    renderCell: (params) => <UserModal el={params} />,
+    headerName: "Order history",
+    width: 100,
+    renderCell: (params) => <UserModal el={params.row} />,
   },
 ];
 
@@ -73,7 +73,7 @@ const style = {
     height: "100vh",
     width: "100vw",
     paddingTop: "40px",
-    paddingRight: "200px",
+    paddingRight: "40px",
     backgroundColor: "#f2f2f9"
   },
   box: {
